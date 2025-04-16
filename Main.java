@@ -1,119 +1,61 @@
-import java.util.ArrayList;
+import java.util.Vector;
 
+class Product {
+    String name;
+    double price;
+    String category;
 
-class Pharmacy {
-    public final int id;
-    public final String name;
-    public int quantity;
-    public double price;
-
-
-    public Pharmacy(int id, String name, int quantity, double price) {
-        this.id = id;
+    Product(String name, double price, String category) {
         this.name = name;
-        this.quantity = quantity;
         this.price = price;
+        this.category = category;
     }
 }
 
+class OnlineShoppingManager {
+    private Vector<Product> inventory = new Vector<>();
 
-public class Main {
-    private ArrayList<Pharmacy> inventory = new ArrayList<>();
-
-
-    // Add new item to inventory
-    public void addItem(Pharmacy item) {
-        inventory.add(item);
+    public void addProduct(String name, double price, String category) {
+        Product product = new Product(name, price, category);
+        inventory.add(product);
     }
 
-
-    // Update existing item in inventory
-    public void updateItem(int id, int quantity, double price) {
-        for (Pharmacy item : inventory) {
-            if (item.id == id) {
-                item.quantity = quantity;
-                item.price = price;
+    public void removeProduct(String name) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).name.equals(name)) {
+                inventory.remove(i);
                 break;
             }
         }
     }
-    // Remove item from inventory
-    public void removeItem(int id) {
-        inventory.removeIf(item -> item.id == id);
-    }
 
-
-    // Display list of all items
-    public void displayInventory() {
-        System.out.println("Inventory:");
-        for (Pharmacy item : inventory) {
-            System.out.println(item.id + " | " + item.name + " | Quantity: " + item.quantity + " | Price: " + item.price);
+    public void displayProducts() {
+        for (Product product : inventory) {
+            System.out.println("Name: " + product.name + ", Price: " + product.price + ", Category: " + product.category);
         }
-    }
-
-
-    // Search for item by ID
-    public Pharmacy searchItemByID(int id) {
-        for (Pharmacy item : inventory) {
-            if (item.id == id) {
-                return item;
-            }
-        }
-        return null; // Item not found
-    }
-
-
-    public static void main(String[] args) {
-        Main ims = new Main();
-
-
-        // Adding sample items
-        ims.addItem(new Pharmacy(1, "Crocin", 100, 2.5));
-        ims.addItem(new Pharmacy(2, "Calpol", 50, 3.0));
-        ims.addItem(new Pharmacy(3, "Crickmol", 200, 1.0));
-
-
-        // Displaying inventory
-        ims.displayInventory();
-
-
-        // Updating an item
-        ims.updateItem(1, 90, 2.0);
-
-
-        // Displaying inventory after update
-        ims.displayInventory();
-
-
-        // Searching for an item
-        System.out.println("Searching for item with ID 2:");
-        Pharmacy foundItem = ims.searchItemByID(2);
-        if (foundItem != null) {
-            System.out.println("Item found: " + foundItem.name);
-        } else {
-            System.out.println("Item not found.");
-        }
-
-
-        // Removing an item
-        ims.removeItem(2);
-
-
-        // Displaying inventory after removal
-        ims.displayInventory();
     }
 }
-/*Inventory:
-1 | Crocin | Quantity: 100 | Price: 2.5
-2 | Calpol | Quantity: 50 | Price: 3.0
-3 | Crickmol | Quantity: 200 | Price: 1.0
-Inventory:
-1 | Crocin | Quantity: 90 | Price: 2.0
-2 | Calpol | Quantity: 50 | Price: 3.0
-3 | Crickmol | Quantity: 200 | Price: 1.0
-Searching for item with ID 2:
-Item found: Calpol
-Inventory:
-1 | Crocin | Quantity: 90 | Price: 2.0
-3 | Crickmol | Quantity: 200 | Price: 1.0
-*/
+
+public class Main {
+    public static void main(String[] args) {
+        OnlineShoppingManager manager = new OnlineShoppingManager();
+        manager.addProduct("Phone", 699.99, "Electronics");
+        manager.addProduct("Backpack", 39.99, "Accessories");
+        manager.addProduct("Pen", 1.99, "Stationery");
+
+        System.out.println("All Products:");
+        manager.displayProducts();
+
+        manager.removeProduct("Backpack");
+
+        System.out.println("After Removing 'Backpack':");
+        manager.displayProducts();
+    }
+}
+/*&All Products:
+Name: Phone, Price: 699.99, Category: Electronics
+Name: Backpack, Price: 39.99, Category: Accessories
+Name: Pen, Price: 1.99, Category: Stationery
+After Removing 'Backpack':
+Name: Phone, Price: 699.99, Category: Electronics
+Name: Pen, Price: 1.99, Category: Stationery*/
