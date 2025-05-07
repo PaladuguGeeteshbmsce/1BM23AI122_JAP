@@ -1,0 +1,15 @@
+"C:\Program Files\Java\jdk-22\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.1\lib\idea_rt.jar=53614:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.1.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\Admin\IdeaProjects\n115n\out\production\n115n program7
+Inventory:
+Name: NICIP, Price: 100.0, Category: COLD AND FLU
+Name: CILACARTI, Price: 50.0, Category: BLOOD PRESSURE REGULATOR
+Name: DOLO 650, Price: 100.0, Category: FEVER-REDUCING
+Inventory:
+Name: NICIP, Price: 100.0, Category: COLD AND FLU
+Name: CILACARTI, Price: 50.0, Category: BLOOD PRESSURE REGULATOR
+Name: DOLO 650, Price: 100.0, Category: FEVER-REDUCING
+Inventory:
+Name: NICIP, Price: 100.0, Category: COLD AND FLU
+Name: CILACARTI, Price: 50.0, Category: BLOOD PRESSURE REGULATOR
+Name: DOLO 650, Price: 100.0, Category: FEVER-REDUCING
+
+Process finished with exit code 0
